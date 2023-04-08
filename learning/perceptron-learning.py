@@ -31,11 +31,11 @@ class PerceptronLEarning:
             self.idx = np.random.randint(self.y.shape[0])                
 
             if self.y[self.idx] == 1 and np.dot(self.W.transpose().flatten(), self.X[self.idx,:].flatten()) + self.b < 0:
-                self.W += self.X[self.idx,:].reshape((2,1))
+                self.W += self.X[self.idx,:].reshape(self.W.shape)
                 self.b += 1
             
             if self.y[self.idx] == 0 and np.dot(self.W.transpose().flatten(), self.X[self.idx,:].flatten()) + self.b >= 0:
-                self.W -= self.X[self.idx,:].reshape((2,1))
+                self.W -= self.X[self.idx,:].reshape(self.W.shape)
                 self.b -= 1
 
             self.idx += 1
