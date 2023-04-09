@@ -13,7 +13,7 @@ class GradientDescent:
         self.mask = np.ones((X.shape[0], 1))
 
     def sigmoid(self):
-        return 1/(1+np.exp(-(np.matmul(self.X, self.W)+self.b*self.mask)))
+        return 1/(1+np.exp(-self.linear()))
 
     def linear(self):
         return np.matmul(self.X, self.W) + self.b*self.mask
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     b = np.random.rand(1,1)
     X = np.random.rand(10,2)
     y = np.random.rand(10,1)
-    n_epochs =150
+    n_epochs =200
 
     optimizer = GradientDescent(X,y,W,b, lr=1e-1)
     losses = list(optimizer.train(n_epochs))
